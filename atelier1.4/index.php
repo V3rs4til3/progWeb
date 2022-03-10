@@ -19,3 +19,7 @@
         Assassin
     </label>
 </div>
+
+<button name="jouer" type="submit" value="classe" class="btn btn-danger px-2" role="button" >
+    <i class="bi bi-trash-fill" aria-hidden="true"></i>
+</button>
