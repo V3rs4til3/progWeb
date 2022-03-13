@@ -28,8 +28,8 @@ $index = 1;
     <div class="form-group">
         <label class="form-label">Categorie</label>
         <select class="form-select" name="taskOption">
-            <?php  foreach ($values as $r){?>
-                <option value="<?= $index ?>"> <?= $r->getName() ?> </option>
+            <?php  foreach ($values as $categorie){?>
+                <option value="<?= $index ?>"> <?= $categorie->getName() ?> </option>
             <?php
                 $index++;
             } ?>
