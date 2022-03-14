@@ -6,26 +6,26 @@ spl_autoload_register();
 
 const HOME_PATH = '/MVC';
 $uri = $_SERVER['REQUEST_URI'];
+$uri = substr($uri, 1);
+$parts = explode('/', $uri);
+$uri = array_shift($parts);
+print_r($parts);
 
-if (class_exists(\controllers\UsersController::class)){
-    define("UserControll", 'controllers\UsersController');
-}
-if (class_exists(\controllers\HomeController::class)){
-    define("HomeControll", 'controllers\HomeController');
-}
-//$controller = new controllers\UsersController();
-//$controller->login();
+
+//to do remplacer get par parts
 
 $controllerName = $_GET['controller'] ?? 'Home';
-$actionName = $_GET['action'] ?? 'index';
 
-if ($controllerName == 'Users' ){
-    $controller = new UserControll();
-    if ($actionName == 'login'){
-        $controller->login();
+if (class_exists('\controllers\\' . $controllerName . 'Controller')){
+    $controllerName = '\controllers\\' . $controllerName . 'Controller';
+    $controller = new $controllerName();
+
+    $actionName = $_GET['action'] ?? 'index';
+    if (method_exists($controller, $actionName)){
+        $controller->$actionName();
     }
 }
 else{
-    $controller = new HomeControll();
+    $controller = new \controllers\HomeController();
     $controller->index();
 }
