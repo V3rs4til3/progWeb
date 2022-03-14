@@ -1,10 +1,10 @@
 <?php
-
+require_once 'EtreVivant.php';
 class Ennemie extends EtreVivant
 {
     function __construct() {
-        $vieMax = rand(1,10);
-        $force = rand(1,10);
-        $defense = rand(1,10);
+        $this->vieMax = rand(1,10);
+        $this->force = rand(1,10);
+        $this->defense = rand(1,10);
     }
 }
