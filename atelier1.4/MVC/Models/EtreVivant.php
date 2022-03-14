@@ -3,24 +3,18 @@
 class EtreVivant
 {
     public int $vieMax = 10,
-        $vieActu,
-        $force,
-        $defense;
-
-    public function __construct(){
-        $this->vieActu = $this->vieMax;
-        $this->force = 5;
-        $this->defense = 5;
-    }
+        $vieActu = 10,
+        $force = 5,
+        $defense = 5;
 
     public static function lancerDee(): int{
         return rand(1,10);
     }
 
-    public function sessionAttack(EtreVivant $attacking, EtreVivant $defending): void{
-        $nbDegat = $this->resultatCombat($attacking->attack(), $defending->defense());
+    public function sessionAttack(EtreVivant $defending): void{
+        $nbDegat = $this->resultatCombat($this->attack(), $defending->defense());
         if($nbDegat >= 1)
-            $defending->vieActu - $nbDegat;
+            $defending->vieActu -= $nbDegat;
     }
 
     public function attack(): int{
@@ -44,7 +38,9 @@ class EtreVivant
     }
 
     public function resultatCombat(int $succAttack, int $succDef):int{
-        return $succAttack > $succDef :: $succAttack - $succDef;
+        if ($succAttack > $succDef)
+            return $succAttack - $succDef;
+        return 0;
     }
 
 }
