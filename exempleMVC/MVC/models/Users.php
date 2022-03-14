@@ -1,5 +1,5 @@
 <?php
-
+namespace models;
 class Users
 {
     public int $id;

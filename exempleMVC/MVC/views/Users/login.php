@@ -1,9 +1,3 @@
-<?php
-require_once '../../controllers/UsersController.php';
-$controller = new UsersController();
-$controller->login();
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
