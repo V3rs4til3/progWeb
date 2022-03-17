@@ -10,4 +10,6 @@ class CategorieModel
         $query->setFetchMode(\PDO::FETCH_CLASS, '\Models\CategorieModel');
         $query->fetchAll();
     }
+
+
 }

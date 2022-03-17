@@ -11,7 +11,4 @@ class JeuxController
         return $loader->getAllJeux($bd);
     }
 
-    public function toutLesJeux():void{
-
-    }
 }

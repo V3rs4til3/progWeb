@@ -2,10 +2,12 @@
 spl_autoload_register();
 //header('location: MVC\Views\index.php');
 $controllerJeux = new \Controllers\JeuxController();
-$controllerJeux->loadGames();
+$modelJeux = new \Models\JeuxModel();
+$modelJeux = $controllerJeux->loadGames();
 
 $controllerCateg = new \Controllers\CategorieController();
-$controllerCateg->loadAllCategorie();
+$modelCateg = new \Models\CategorieModel();
+$modelCateg = $controllerCateg->loadAllCategorie();
 ?>
 <link rel="stylesheet" href="style.css">
 
@@ -15,10 +17,10 @@ $controllerCateg->loadAllCategorie();
     <a class="btn btn-primary btn-circle btn-sm" href="ajouter.php" role="button">+</a>
 </form>
 <?php
-foreach ($controllerJeux as $r){?>
+foreach ($modelJeux as $r){?>
     <form class="row row-cols-lg-auto g-3 align-items-cente alert alert-secondary" method="post" action="modif.php">
-        <p> <?= $r->getName() ?> </p>
-        <p class="text-muted"> -<?= $r->name ?> </p>
+        <p> <?= $r->nomJeu ?> </p>
+        <p class="text-muted"> -<?= $controllerCateg->getCategorie($r->idCategorie) ?> </p>
 
         <button name="edit" value="<?= $r->getID()?>" class="btn btn-primary px-2" role="button">
             <i class="bi bi-pencil-fill" aria-hidden="true" href="index2.php"></i>
