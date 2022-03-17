@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="alert aler-sucess">Total : <span>0</span></div>
+    <form data-total="0">
+        <div>
+            <label>Nombre</label>
+            <input id="nb" class="form-control">
+        </div>
+        <div>
+            <button class="btn btn-primary">Ajouter</button>
+        </div>
+    </form>
+    <ul></ul>
+    <script>
+        let total = 0;
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault();
+            let nb = document.querySelector('#nb').value;
+            total += parseInt(nb);
+            document.querySelector('.alert > span').innerText = total; // document.getElementByClass
+            document.querySelector('#nb').value = ''; // document.getElementByID
+
+            document.querySelector('form').setAttribute('total', total);
+            console.log(document.querySelector('form').getAttribute('data-total'));
+            /*
+            Methode unsafe (aucune entree utilisateur)
+            document.querySelector('ul').insertAdjacentHTML('beforeend', '<li>' + nb + '</li>');
+             */
+
+            //lorsque les donne ne sont pas fiable (entree user)
+            let li = document.createElement('li');
+            li.innerText = nb;
+            document.querySelector('ul').append(li);
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/dayjs.min.js" integrity="sha512-KTFpdbCb05CY4l242bLjyaPhoL9vAy4erP1Wkn7Rji0AG6jx6zzGtKkdHc7jUOYOVSmbMbTg728u260CA/Qugg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/locale/fr-ca.min.js" integrity="sha512-H3ti4ZWXhMxJ6VSqnZ2mPMvumVGqgtuTFV5Sgs2AO5S/owTSQkqOUi/1k+3VTuOkwsUjAAgD2fWiHSQKBqR46A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/plugin/localizedFormat.min.js" integrity="sha512-webaelc41/yR5a3vWQMwU1o6nqNPlwiiF9T4UfUJjGb/+jTHvpd7Xbj1d4IkHTxrjOnrl04W2D6ytruI9NNWhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/plugin/relativeTime.min.js" integrity="sha512-7YYTlJ8OTdmDMztOy8q+zfRI/+y/IWnVp1oS4kiTKa+X2P09k/ObWUemEjtMoumu8v4A0s1NZu7WjfR+UxhRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        dayjs.extend(window.dayjs_plugin_localizedFormat);
+        dayjs.extend(window.dayjs_plugin_relativeTime);
+        dayjs.locale('fr-ca');
+
+        let maintenant = dayjs(new Date(2022, 10 , 01));
+        //maintenant = maintenant.add(20, 'd')
+        console.log(maintenant.fromNow());
+        console.log(maintenant.format('LL'));
+    </script>
+
+</body>
+</html>

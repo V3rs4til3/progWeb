@@ -16,5 +16,4 @@ else if(isset($_POST['editJeux']) && isset($_POST['editTaskOption']) && isset($_
     echo '$id';
     $query= $bd->query('UPDATE jeux SET nom = ' . $_POST['editJeux'] . ' , idCateg = ' . $_POST['editTaskOption'] . ' WHERE  id = ' . $_POST['editID']);
     $query->execute();
-
 }
