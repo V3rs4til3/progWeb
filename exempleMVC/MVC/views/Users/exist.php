@@ -13,14 +13,9 @@
             <input type="text" class="form-control" name="username" id="username"/>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" name="password" id="password"/>
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Créer son compte</button>
+            <button type="submit" class="btn btn-primary">Verif exist username</button>
         </div>
     </form>
 </div>
-<script src="/MVC/assets/js/login.js"></script>
 </body>
 </html>
