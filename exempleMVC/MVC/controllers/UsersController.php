@@ -4,7 +4,7 @@ namespace controllers;
 
 class UsersController
 {
-    function  login() {
+    function login() {
         if (isset($_POST['username'])) {
             //require_once '../../models/Users.php';
             $bd = new \PDO('mysql:dbname=login;host=host.docker.internal;port=3306',

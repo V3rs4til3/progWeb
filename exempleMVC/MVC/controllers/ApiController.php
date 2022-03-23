@@ -4,7 +4,7 @@ namespace controllers;
 
 class ApiController
 {
-    function userExist(){
+    function userExist():void {
         $bd = new \PDO('mysql:dbname=login;host=host.docker.internal;port=3306',
             'root', 'root');
         $username = $_POST['username'];
